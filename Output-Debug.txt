@@ -1,0 +1,14 @@
+﻿'parseQR.exe' (Win32): Loaded 'C:\Users\jimy\Desktop\deprecated\parseQR\Debug\parseQR.exe'. Symbols loaded.
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. 
+The thread 0x52fc has exited with code 0 (0x0).
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. 
+'parseQR.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. 
+The thread 0x33f4 has exited with code 0 (0x0).
+The thread 0x3cd4 has exited with code 0 (0x0).
+The program '[13192] parseQR.exe' has exited with code 0 (0x0).

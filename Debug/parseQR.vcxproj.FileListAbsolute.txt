@@ -1,0 +1,3 @@
+C:\Users\clayton\source\repos\parseQR\Debug\parseQR.exe
+C:\Users\clayton\source\repos\parseQR\Debug\parseQR.pdb
+C:\Users\jimy\Desktop\deprecated\parseQR\Debug\parseQR.exe
