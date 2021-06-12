@@ -23,8 +23,7 @@ int main(int argc, char *argv[]) // input is a 32 character string
 	string notes;
 	string date;
 	// string vendor;
-	// string description;
-
+	
 	//gathering the input of the .csv
 	while (ip.good()) //or EOF: end of file 
 	{ 
@@ -34,9 +33,7 @@ int main(int argc, char *argv[]) // input is a 32 character string
 		getline(ip, notes, ',');
 		getline(ip, date, '\n');
 		// getline(ip, vendor, ',');
-		// getline(ip, description, ',');
-		// getline(ip, quantities, '\n');
-
+		
 		cout << "string: " << barcode << endl; //debug
 		//cout << "hexval: "; //debug to test
 
@@ -58,10 +55,10 @@ int main(int argc, char *argv[]) // input is a 32 character string
 
 	for (int i = 1; i < argc; ++i)
 	{
-		inHex = barcode; //test: 21122A29E540A80020000620000000AF
+		inHex = barcode; //test: 21122A29E540A80020000620000000AF // reading the last line of the .csv file i believe
 		inBinary = GetBinaryStringFromHexString(inHex);
-		cout << inHex << "\n";
-		cout << inBinary << "\n";
+		cout << "inHex: " << inHex << "\n"; //its explaining in " "
+		cout << "inBinary: " << inBinary << "\n";
 
 		encodeVer = strtoul(inBinary.substr(0, 4).c_str(), nullptr, 2);
 		printArea = strtoul(inBinary.substr(4, 4).c_str(), nullptr, 2);
@@ -72,14 +69,14 @@ int main(int argc, char *argv[]) // input is a 32 character string
 		serialNumber = strtoul(inBinary.substr(67, 24).c_str(), nullptr, 2);
 		checkSum = strtoul(inBinary.substr(120, 8).c_str(), nullptr, 2);
 
-		cout << "encode Version: " << encodeVer << "\n";
+		cout << "\n" << "Encode Version: " << encodeVer << "\n";
 		cout << "Print Area: " << printArea << "\n";
-		cout << "item Code: " << itemCode << "\n";
+		cout << "Ttem Code: " << itemCode << "\n";
 		cout << "Packing Division: " << packingDiv << "\n";
 		cout << "Production Year: " << productionYear << "\n";
-		cout << "quantity: " << quantity << "\n";
+		cout << "Quantity: " << quantity << "\n";
 		cout << "Serial Number: " << serialNumber << "\n";
-		cout << "checksum: " << checkSum << "\n";
+		cout << "Checksum: " << checkSum << "\n";
 	} 
 
     return 0;
