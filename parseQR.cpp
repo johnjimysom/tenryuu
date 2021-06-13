@@ -8,6 +8,8 @@
 //for reading files
 #include <iostream>
 #include <fstream>
+#include <vector>
+
 using namespace std;
 
 string GetBinaryStringFromHexString(string);
@@ -24,6 +26,10 @@ int main(int argc, char *argv[]) // input is a 32 character string
 	string date;
 	// string vendor;
 	
+	//read about vectors
+	std::vector<string> allbarcodes = { };
+
+
 	//gathering the input of the .csv
 	while (ip.good()) //or EOF: end of file 
 	{ 
@@ -34,7 +40,12 @@ int main(int argc, char *argv[]) // input is a 32 character string
 		getline(ip, date, '\n');
 		// getline(ip, vendor, ',');
 		
-		cout << "string: " << barcode << endl; //debug
+		if(barcode.length() == 32)//there has to be hexadecimals, it will parse if there's 32 hexadecimals characters 
+		{
+			allbarcodes.push_back(barcode);
+		}
+		
+		//std::cout << "string: " << barcode << endl; //debug
 		//cout << "hexval: "; //debug to test
 
 		//outputs in the terminal display
@@ -53,12 +64,12 @@ int main(int argc, char *argv[]) // input is a 32 character string
 	string inHex, inBinary;
 
 
-	for (int i = 1; i < argc; ++i)
+	for (string bb:allbarcodes) //have to store all the barcodes, so we create "string bb"
 	{
-		inHex = barcode; //test: 21122A29E540A80020000620000000AF // reading the last line of the .csv file i believe
+		inHex = bb; //test: 21122A29E540A80020000620000000AF // reading the last line of the .csv file i believe
 		inBinary = GetBinaryStringFromHexString(inHex);
-		cout << "inHex: " << inHex << "\n"; //its explaining in " "
-		cout << "inBinary: " << inBinary << "\n";
+		std::cout << "inHex: " << inHex << "\n"; //its explaining in " "
+		std::cout << "inBinary: " << inBinary << "\n";
 
 		encodeVer = strtoul(inBinary.substr(0, 4).c_str(), nullptr, 2);
 		printArea = strtoul(inBinary.substr(4, 4).c_str(), nullptr, 2);
@@ -69,14 +80,14 @@ int main(int argc, char *argv[]) // input is a 32 character string
 		serialNumber = strtoul(inBinary.substr(67, 24).c_str(), nullptr, 2);
 		checkSum = strtoul(inBinary.substr(120, 8).c_str(), nullptr, 2);
 
-		cout << "\n" << "Encode Version: " << encodeVer << "\n";
-		cout << "Print Area: " << printArea << "\n";
-		cout << "Ttem Code: " << itemCode << "\n";
-		cout << "Packing Division: " << packingDiv << "\n";
-		cout << "Production Year: " << productionYear << "\n";
-		cout << "Quantity: " << quantity << "\n";
-		cout << "Serial Number: " << serialNumber << "\n";
-		cout << "Checksum: " << checkSum << "\n";
+		std::cout << "\n" << "Encode Version: " << encodeVer << "\n";
+		std::cout << "Print Area: " << printArea << "\n";
+		std::cout << "Item Code: " << itemCode << "\n";
+		std::cout << "Packing Division: " << packingDiv << "\n";
+		std::cout << "Production Year: " << productionYear << "\n";
+		std::cout << "Quantity: " << quantity << "\n";
+		std::cout << "Serial Number: " << serialNumber << "\n";
+		std::cout << "Checksum: " << checkSum << "\n";
 	} 
 
     return 0;
