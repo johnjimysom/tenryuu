@@ -37,7 +37,8 @@ int main(int argc, char *argv[]) // input is a 32 character string
 	//string vendor;
 	
 	//read about vectors
-	std::vector<string> allbarcodes = { };
+	std::vector<string> allbarcodes, allquantities, allnames, alldescription, allcategory, allnotes, allLocation, alldate = { };
+	string outputfile_name;
 
 	while (ip.good()) //or EOF: end of file 
 	{ 
@@ -61,16 +62,6 @@ int main(int argc, char *argv[]) // input is a 32 character string
 
 		//std::cout << "string: " << barcode << endl; //debug
 		//cout << "hexval: "; //debug to test
-
-		//outputs in the terminal display
-		/********************************************************************************
-		std::cout << "Barcode: " << barcode << '\n';
-		std::cout << "Quantities: " << quantities << '\n';
-		std::cout << "Notes: " << notes << '\n';
-		std::cout << "Date Scanned: " << date << '\n';
-		std::cout << "Vendor: " << vendor << '\n';
-		std::cout << "-----------------------------------------------------" << '\n';
-		*******************************************************************************/
 	}
 	ip.close();
 
@@ -83,8 +74,8 @@ int main(int argc, char *argv[]) // input is a 32 character string
 	{
 		inHex = bb; //test: 21122A29E540A80020000620000000AF // reading the last line of the .csv file i believe
 		inBinary = GetBinaryStringFromHexString(inHex);
-		//std::cout << "inHex: " << inHex << "\n"; //its explaining in " "
-		//std::cout << "inBinary: " << inBinary << "\n";
+		std::cout << "\n" << "QR Barcode inHex: " << inHex; //its explaining in " "
+		//std::cout << "\n" << "inBinary: " << inBinary << "\n";
 
 		encodeVer = strtoul(inBinary.substr(0, 4).c_str(), nullptr, 2);
 		printArea = strtoul(inBinary.substr(4, 4).c_str(), nullptr, 2);
@@ -101,17 +92,26 @@ int main(int argc, char *argv[]) // input is a 32 character string
 		std::cout << "Item Code: " << itemCode << "\n";
 		std::cout << "Packing Division: " << packingDiv << "\n";
 		std::cout << "Production Year: " << productionYear << "\n";
-		std::cout << "Quantity: " << quantity << "\n";
+		std::cout << "Quantity: " << quantity << "\n"; //contents in a box.
 		std::cout << "Serial Number: " << serialNumber << "\n";
 		std::cout << "Checksum: " << checkSum << "\n\n";
 
 		//results from a getline()
 		//std::cout << "Notes: " << notes << '\n';
-		std::cout << "Date Scanned: " << date << '\n';
+		//std::cout << "Date Scanned: " << date << '\n';
 		//std::cout << "Quantity: " << quantity << "\n";
 		//std::cout << "Inventory Scanned: " << quantities << '\n';
-		std::cout << "-----------------------------------------------------";
+//		std::cout << "-----------------------------------------------------";
+	//	cout << "\n Please enter a file name for output file: ";
+		//cin >> outputfile_name;
+		//std::ofstream newFile(outputfile_name);
+	//	for (int i = 0; i < string.size(); ++i)
+	//	{
+	//		outputfile_name << string.at(i) << "\n";
+	//	}
+
 	}
+
     return 0;
 }
 
